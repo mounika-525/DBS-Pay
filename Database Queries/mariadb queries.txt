@@ -1,0 +1,153 @@
+CREATE DATABASE  IF NOT EXISTS `payments` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+------------------
+USE `payments`;
+-----------------------------------------------------
+DROP TABLE IF EXISTS `banks`;
+------------------------
+
+banks table creation
+================================
+CREATE TABLE `banks` (
+  `bic` varchar(255) NOT NULL,
+  `bname` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`bic`)
+);
+
+inserting values into banks table
+=============================================
+LOCK TABLES `banks` WRITE;
+/*!40000 ALTER TABLE `banks` DISABLE KEYS */;
+INSERT INTO `banks` VALUES ('ABBLINBBXXX','AB BANK LIMITED'),('ABNAINBBAHM','ABN AMRO BANK N.V.'),('ACBLINBBXXX','ABHYUDAYA CO-OPERATIVE BANK LTD.'),('ADCBINBBXXX','ABU DHABI COMMERCIAL BANK'),('ADIAINBBXXX','ANTWERP DIAMOND BANK N.V.'),('ALLAINBBXXX','ALLAHABAD BANK'),('ANDBINBBXXX','ANDHRA BANK'),('AXISINBBXXX','AXIS BANK LIMITED'),('BARBINBBXXX','BANK OF BARODA'),('BARCINBBMUM','BARCLAYS BANK PLC'),('BBKUINBBXXX','BANK OF BAHRAIN AND KUWAIT B.S.C.'),('BCEYIN5MXXX','BANK OF CEYLON'),('BCMLINBBXXX','THE BHARAT CO-OPERATIVE BANK (MUMBAI) LTD'),('BKDNINBBXXX','DENA BANK'),('BKIDINBBXXX','BANK OF INDIA'),('BNPAINBBAHM','BNP PARIBAS INDIA'),('BOFAIN4XCCU','BANK OF AMERICA, N.A. KOLKATA'),('BOFAIN4XMAA','BANK OF AMERICA, N.A. CHENNAI'),('BOTKIN5MXXX','BANK OF TOKYO-MITSUBISHI UFJ, LTD., THE'),('BRAJINBBARA','THE BANK OF RAJASTHAN LTD.'),('BSONINCCXXX','SONALI BANK'),('CBININBBLAL','CENTRAL BANK OF INDIA'),('CCILINBBXXX','CLEARING CORPORATION OF INDIA LTD, THE'),('CHASINBXTRO','JPMORGAN CHASE BANK, N.A.'),('CITIINBXBLR','CITIBANK N.A.'),('CIUBIN5MXXX','CITY UNION BANK LIMITED'),('CNRBINBBXXX','CANARA BANK'),('CORPINBBXXX','CORPORATION BANK'),('COSDINBBXXX','THE COSMOS CO-OPERATIVE BANK LTD.'),('CSYBIN55XXX','CATHOLIC SYRIAN BANK LTD'),('CTCBINDDXXX','CHINATRUST COMMERCIAL BANK'),('DBSSINBBIBD','DBS BANK LTD, MUMBAI BRANCH'),('DCBLINBB036','DEVELOPMENT CREDIT BANK LTD.'),('DEUTINBBBGL','DEUTSCHE BANK AG'),('DLXBINBBKPM','DHANALAKSHMI BANK LTD, THE'),('EIBIINBBXXX','EXPORT-IMPORT BANK OF INDIA'),('FDRLINBBXXX','FEDERAL BANK LIMITED, THE'),('FIRNINBBXXX','FIRSTRAND BANK LIMITED'),('GTBKINBBXXX','ORIENTAL BANK OF COMMERCE'),('HDFCINBBAHM','HDFC BANK LIMITED'),('HSBCINBBBGE','HONGKONG AND SHANGHAI BANKING CORPORATION LIMITED, THE'),('IBKLINBBXXX','IDBI BANK LIMITED'),('ICICINBB024','ICICI BANK LIMITED'),('IDIBINBBXXX','INDIAN BANK'),('INDBINBBXXX','INDUSIND BANK LIMITED'),('IOBAINBBXXX','INDIAN OVERSEAS BANK'),('JAKAINBBAGR','JAMMU AND KASHMIR BANK LTD'),('KALUINAAXXX','THE KALUPUR COMMERCIAL CO-OPERATIVE BANK LIMITED'),('KARBINBBBNG','KARNATAKA BANK LTD.'),('KKBKINBBCPC','KOTAK MAHINDRA BANK LIMITED'),('KRTHINBBXXX','KRUNG THAI BANK PUBLIC COMPANY LTD'),('KVBLINBBADI','KARUR VYSYA BANK LTD., THE'),('LAVBINBB114','LAKSHMI VILAS BANK LIMITED'),('MAHBINBBAHM','BANK OF MAHARASHTRA'),('MHCBINBBXXX','MIZUHO CORPORATE BANK LTD'),('MSCIINBBXXX','MAHARASHTRA STATE CO-OPERATIVE BANK LTD., THE'),('MSHQINBBXXX','MASHREQ BANK'),('MSMBINBXXXX','MORGAN STANLEY INDIA COMPANY PVT LTD'),('NOSCINBBBLR','BANK OF NOVA SCOTIA, THE'),('OIBAINBBXXX','OMAN INTERNATIONAL BANK'),('PSIBINBB020','PUNJAB AND SIND BANK'),('PUNBINBBXXX','PUNJAB NATIONAL BANK'),('RBISINBBXXX','RESERVE BANK OF INDIA'),('SBBJINBBXXX','STATE BANK OF BIKANER AND JAIPUR'),('SBCLINBBXXX','SBI COMMERCIAL AND INTERNATIONAL BANK LTD.'),('SBHYINBBXXX','STATE BANK OF HYDERABAD'),('SBININBBXXX','STATE BANK OF INDIA'),('SBMYINBBXXX','STATE BANK OF MYSORE'),('SBTRINBBXXX','STATE BANK OF TRAVANCORE'),('SCBLINBBMDS','STANDARD CHARTERED BANK'),('SCDIIN51XXX','SPARK CAPITAL ADVISORS (INDIA) PRIVATE LTD'),('SHBKINBBXXX','SHINHAN BANK'),('SIDBINBBCBB','SMALL INDUSTRIES DEVELOPMENT BANK OF INDIA'),('SOGEINBBBLR','SOCIETE GENERALE'),('SOININ55179','SOUTH INDIAN BANK LTD., THE'),('SRCBINBBAUR','SARASWAT CO-OPERATIVE BANK LTD., THE'),('STBPINBBXXX','STATE BANK OF PATIALA'),('STCBINBXNPT','STATE BANK OF MAURITIUS LIMITED'),('STININBBXXX','STATE BANK OF INDORE'),('SVCBINBBBLR','THE SHAMRAO VITHAL CO-OPERATIVE BANK LIMITED'),('SYNBINBBXXX','SYNDICATE BANK'),('TCILINBBXXX','THOMAS COOK (INDIA) LTD.'),('TMBLINBBCHE','TAMILNAD MERCANTILE BANK LIMITED'),('UBININBBXXX','UNION BANK OF INDIA'),('UBSWINBBXXX','UBS AG'),('UCBAINBBXXX','UCO BANK'),('UTBIINBBECB','UNITED BANK OF INDIA'),('VIJBINBBXXX','VIJAYA BANK'),('VTBRINDDXXX','JSC VTB BANK, NEW DELHI BRANCH'),('VYSAINBBAHD','ING VYSYA BANK LTD.'),('YESBINBBDEL','YES BANK LIMITED');
+/*!40000 ALTER TABLE `banks` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+------------------------------------------
+
+to view the data 
+---------------
+select * from banks;
+
+=======================================================================================
+
+
+creating customers table
+=============================================
+
+DROP TABLE IF EXISTS `customers`;
+-----------------------
+CREATE TABLE `customers` (
+  `cust_id` varchar(255) NOT NULL,
+  `clear_balance` double DEFAULT '0',
+  `cust_name` varchar(255) DEFAULT NULL,
+  `overdraft` varchar(3) DEFAULT NULL,
+  PRIMARY KEY (`cust_id`)
+);
+--
+-- Dumping data for table `customers`
+--
+
+LOCK TABLES `customers` WRITE;
+
+INSERT INTO `customers` VALUES ('13645221972859',89987.5,'ANUPAMA N','No'),('14783038759432',100,'ANANTHAMURTHY SHAMASUNDARA','YES'),('15510851190541',224004,'AJAY SHAMU KUMAR','No'),('17308739433267',65000,'AREEFIKBAL T F','No'),('20050293665889',224008,'ASHAJYOTHI M','No'),('27216037942722',224004,'HDFC BANK -(GOA)','yes'),('27225043545104',1556002,'ASADI LINGAREDDY','No'),('34835543999244',56001,'ANAND L S','No'),('37437137526069',35800,'ANIL KUMAR','No'),('39145971759304',5200,'ABRAHAM VARGHESE','No'),('42895235807723',1120005,'HDFC BANK -(DELHI)','No'),('45002608912874',56001,'HDFC BANK -(MUMBAI)','No'),('45766734966995',224000,'ABHISHEK BIYANI','No'),('46957845854316',56001,'ANITHA B ASHWATH','yes'),('47468155457802',56000,'A S VIJAY KUMAR','No'),('49823469696097',56200,'ASHOKA AR','YES'),('53853797183656',224005,'B A SANTOSH','NO'),('57577094248867',508250,'ARJUN PARAMESWARA','No'),('57792220815896',1120025,'B JAYARAM','NO'),('61331727051606',224004,'ANJAN KUMAR G','yes'),('63615912257030',76334,'ANU','No'),('64059555180495',224001,'AKSHAYA WEALTH MANAGEMENT (P) LTD','No'),('64754104823235',224001,'ANKITA BANERJEE','No'),('69443662887399',56001,'ANIL KUMAR NAGARAJ','yes'),('69652133523248',223997,'HDFC BANK -(CHENNAI)','yes'),('71319440983198',224000,'A M MAYANNA','No'),('71928505646815',46000,'ASHOK H R','No'),('72153770404022',0,'B PRAKASH BABU','YES'),('76396804083946',224004,'ANANTHAKUMAR','No'),('77236671175938',224001,'ANIL V GORUR','yes'),('78195245302715',35000,'A RAJESH KUMAR','yes'),('79029264231605',224008,'AYISHA KAUSAR','NO'),('79594243111085',-25000,'ANITA B MEHTA','yes'),('80505259371358',76334,'ANNUKA NIRVAN','No'),('81181212472499',224005,'ASHISH MISHRA','No'),('83020817828620',56000,'A KRISHNA MOHAN','yes'),('83411975607693',15400,'ABY GEORGE','No'),('87030077359017',25600,'ANIL GUPTA','No'),('87139550565094',223997,'ABHITHA','No'),('89479615455884',-350,'ARPITHA M S','No'),('9391236969',40000,'MIB','Yes'),('98196009547795',56002,'AVISHEK MUKHERJEE','NO');
+
+UNLOCK TABLES;
+
+---------------------------------------
+
+to view the data 
+---------------
+select * from customers;
+
+=======================================================================================
+
+
+creating login table
+==========================================
+DROP TABLE IF EXISTS `login`;
+
+CREATE TABLE `login` (
+  `uname` varchar(255) NOT NULL,
+  `pswd` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`uname`)
+);
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` VALUES ('user','user'),('user2','user2');
+
+---------------------------------------
+
+to view the data 
+---------------
+select * from login;
+
+=======================================================================================
+
+
+creating message table
+==========================================
+
+
+DROP TABLE IF EXISTS `message`;
+
+CREATE TABLE `message` (
+  `message_code` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`message_code`)
+);
+
+--
+-- Dumping data for table `message`
+--
+
+LOCK TABLES `message` WRITE;
+
+INSERT INTO `message` VALUES ('CHQB','beneficiary customer must be paid by cheque only.'),('CORT','Payment is made in settlement for a trade.'),('HOLD','Beneficiary customer or claimant will call upon identification.'),('INTC','Payment between two companies that belongs to the same group.'),('PHOB','Please advise the intermediary institution by phone.'),('PHOI','Please advise the intermediary by phone.'),('PHON','Please advise the account with institution by phone.'),('REPA','Payments has a related e-Payments reference.'),('SDVA','Payment must be executed with same day value to the');
+
+UNLOCK TABLES;
+
+
+---------------------------------------
+
+to view the data 
+---------------
+select * from message;
+
+=======================================================================================
+
+
+creating transaction table
+==========================================
+
+DROP TABLE IF EXISTS `transactions`;
+CREATE TABLE `transactions` (
+  `transaction_id` int NOT NULL AUTO_INCREMENT,
+  `amount` double DEFAULT NULL,
+  `customer_id` varchar(255) DEFAULT NULL,
+  `customer_name` varchar(255) DEFAULT NULL,
+  `receiver_id` varchar(255) DEFAULT NULL,
+  `receiver_name` varchar(255) DEFAULT NULL,
+  `receiver_bic` varchar(255) DEFAULT NULL,
+  `receiver_bname` varchar(255) DEFAULT NULL,
+  `message_code` varchar(255) DEFAULT NULL,
+  `transfer_type` int DEFAULT NULL,
+  `timestamp` date DEFAULT NULL,
+  PRIMARY KEY (`transaction_id`)
+);
+
+---------------------------------
+the transaction table will be updated automatically based the customer transactions.
+
+---------------------------------------
+
+to view the data 
+---------------
+select * from transaction;
+
+=======================================================================================
+
+						
+
